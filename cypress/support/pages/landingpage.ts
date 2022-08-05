@@ -8,5 +8,9 @@ class Landingpage{
         cy.contains('Customer Login').should('be.visible');
         cy.contains('Bank Manager Login').should('be.visible');
     }
+    customerLoginButton(){
+        cy.contains('Customer Login').click();
+    }
+
 }
 export default new Landingpage();

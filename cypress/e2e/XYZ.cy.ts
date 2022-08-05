@@ -1,8 +1,12 @@
 import Landingpage from '../support/pages/landingpage'
+import Customerpage from '../support/pages/customerloginpage'
 
 describe('Landing Page', () => {
-  it('should contain 3 buttons', () => {
-    Landingpage.invokeApplication();
+    beforeEach(() => {
+       Landingpage.invokeApplication();
+    })
+    
+    it('should contain 3 buttons', () => {
     Landingpage.verifyButtonsOnLandingPage()
-  })
+   })
 })
