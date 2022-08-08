@@ -15,7 +15,7 @@ class CustomerLoginpage {
         cy.contains('Withdrawl').should('be.visible');
     }
 
-    verifyCustomerNameOnCustomerLandingPage(customerName: string):void{
+    verifyCustomerNameOnCustomerLandingPage(customerName: string){
         cy.contains('Welcome').should('be.visible');
         cy.contains(customerName).should('be.visible');
     }
