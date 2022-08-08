@@ -10,7 +10,7 @@ describe('Customer', () => {
         Landingpage.customerLoginButton();
         Customerpage.selectcustomername('Ron Weasly');
         Customerpage.clickLogin();
-        Customerpage.verifyCustomerNameOnCustomerLandingPage('Ron Weasly');
         Customerpage.verifyButtonsOnCustomerLoginLandingPage();
+        Customerpage.verifyCustomerNameOnCustomerLandingPage('Ron Weasly');
     })
 })
