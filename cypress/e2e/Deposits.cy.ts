@@ -18,4 +18,21 @@ describe('As Customer', () => {
       Deposits.depositAmount(depositAmount1);
       Customerpage.verifyBalanceAfterDeposit(depositAmount1)
     });
+
+    it('Should update the balance on multiple deposits', ()=>{
+      Customerpage.getPreviousBalance();
+      let depositAmount1 = 100;
+      Deposits.depositAmount(depositAmount1);
+      cy.get('@previousBalance').then(previousBalance =>{
+        let expectedBalance:Number = Number(previousBalance) + depositAmount1;
+        Customerpage.verifyBalanceAfterDeposit(expectedBalance);
+      });
+      Customerpage.getPreviousBalance();
+      let depositAmount2 = 20;
+      Deposits.depositAmount(depositAmount2);
+      cy.get('@previousBalance').then(previousBalance =>{
+        let expectedBalance:Number = Number(previousBalance) + depositAmount2;
+        Customerpage.verifyBalanceAfterDeposit(expectedBalance);
+      });
+    });
 })
