@@ -1,12 +1,9 @@
 class CustomerLoginpage {
-    selectcustomername(customerName: string){
+    loginAs(customerName: string){
         cy.get('#userSelect').select(customerName);
-    }
-
-    clickLogin(){
         cy.contains('Login').click();
     }
-    
+
     verifyButtonsOnCustomerLoginLandingPage():void{
         cy.contains('Home').should('be.visible');
         cy.contains('Logout').should('be.visible');

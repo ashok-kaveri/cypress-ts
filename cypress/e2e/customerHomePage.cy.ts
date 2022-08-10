@@ -1,5 +1,5 @@
-import Landingpage from '../support/pages/landingpage'
-import Customerpage from '../support/pages/customerloginpage'
+import Landingpage from '../support/pages/landingPage'
+import Customerpage from '../support/pages/customerHomePage'
 
 describe('Customer', () => {
     beforeEach(() => {
@@ -8,8 +8,7 @@ describe('Customer', () => {
 
     it('should be able to login into XYZ bank', ()=>{
         Landingpage.customerLoginButton();
-        Customerpage.selectcustomername('Ron Weasly');
-        Customerpage.clickLogin();
+        Customerpage.loginAs('Ron Weasly');
         Customerpage.verifyCustomerNameOnCustomerLandingPage('Ron Weasly');
         Customerpage.verifyButtonsOnCustomerLoginLandingPage();
     })

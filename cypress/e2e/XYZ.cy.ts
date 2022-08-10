@@ -1,5 +1,4 @@
-import Landingpage from '../support/pages/landingpage'
-import Customerpage from '../support/pages/customerloginpage'
+import Landingpage from '../support/pages/landingPage'
 
 describe('Landing Page', () => {
     beforeEach(() => {

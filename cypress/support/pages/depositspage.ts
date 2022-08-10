@@ -1,19 +1,18 @@
 class Deposits{
-    
-    clickDeposit(){
+
+    navigateToDeposits(){
         cy.contains('Deposit').click();
-    }
-
-    enterDepositAmount(amount: Number) {
-        cy.get('input[ng-model="amount"]').type(amount.toString());
-    }
-
-    clickDepositButton(){
-        cy.get('button[type="submit"]').click();
     }
 
     verifyDepositSuccess(){
         cy.contains('Deposit Successful').should('be.visible');
+    }
+
+    depositAmount(amount: Number){
+        this.navigateToDeposits();
+        cy.get('input[ng-model="amount"]').type(amount.toString());
+        cy.get('button[type="submit"]').click();
+        this.verifyDepositSuccess();
     }
 }
 export default new Deposits();
