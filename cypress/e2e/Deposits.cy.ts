@@ -9,7 +9,13 @@ describe('As Customer', () => {
        Customerpage.loginAs('Ron Weasly');
     });
 
-    it('I should be able to deposit amount and get success message', ()=>{
+    it('Should be able to deposit amount and get success message', ()=>{
       Deposits.depositAmount(100);
+    });
+
+    it('Should update the balance after depositing the amount', ()=>{
+      let depositAmount1 = 100;
+      Deposits.depositAmount(depositAmount1);
+      Customerpage.verifyBalanceAfterDeposit(depositAmount1)
     });
 })
