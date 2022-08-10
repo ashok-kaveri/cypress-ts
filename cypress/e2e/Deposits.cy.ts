@@ -11,9 +11,16 @@ describe('As Customer', () => {
     });
 
     it('I Should be able to deposit amount', ()=>{
-      Deposits.clickDeposits();
-      Deposits.enterAmount(100);
+      Deposits.clickDeposit();
+      Customerpage.getBalance();
+      Deposits.enterDepositAmount(100);
       Deposits.clickDepositButton();
       Deposits.verifyDepositSuccess();
+      Customerpage.verifyBalanceAfterDeposit(100);
+      Customerpage.getBalance();
+      Deposits.enterDepositAmount(100);
+      Deposits.clickDepositButton();
+      Customerpage.verifyBalanceAfterDeposit(200);
+
     });
 })

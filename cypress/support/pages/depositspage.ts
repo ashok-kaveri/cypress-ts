@@ -1,10 +1,10 @@
 class Deposits{
     
-    clickDeposits(){
+    clickDeposit(){
         cy.contains('Deposit').click();
     }
 
-    enterAmount(amount: Number) {
+    enterDepositAmount(amount: Number) {
         cy.get('input[ng-model="amount"]').type(amount.toString());
     }
 
