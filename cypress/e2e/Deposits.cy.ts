@@ -10,26 +10,30 @@ describe('As Customer', () => {
     });
 
     it('Should be able to deposit amount and get success message', ()=>{
-      Deposits.depositAmount(100);
+      let depositAmount = 100;
+      let accountNumber = 1007;
+      Deposits.depositAmount(accountNumber, depositAmount);
     });
 
     it('Should update the balance after depositing the amount', ()=>{
       let depositAmount1 = 100;
-      Deposits.depositAmount(depositAmount1);
+      let accountNumber = 1007;
+      Deposits.depositAmount(accountNumber, depositAmount1);
       Customerpage.verifyBalanceAfterDeposit(depositAmount1)
     });
 
     it('Should update the balance on multiple deposits', ()=>{
       Customerpage.getPreviousBalance();
       let depositAmount1 = 100;
-      Deposits.depositAmount(depositAmount1);
+      let accountNumber = 1007;
+      Deposits.depositAmount(accountNumber, depositAmount1);
       cy.get('@previousBalance').then(previousBalance =>{
         let expectedBalance:Number = Number(previousBalance) + depositAmount1;
         Customerpage.verifyBalanceAfterDeposit(expectedBalance);
       });
       Customerpage.getPreviousBalance();
       let depositAmount2 = 20;
-      Deposits.depositAmount(depositAmount2);
+      Deposits.depositAmount(accountNumber, depositAmount2);
       cy.get('@previousBalance').then(previousBalance =>{
         let expectedBalance:Number = Number(previousBalance) + depositAmount2;
         Customerpage.verifyBalanceAfterDeposit(expectedBalance);
