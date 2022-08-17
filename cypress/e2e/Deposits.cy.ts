@@ -39,4 +39,19 @@ describe('As Customer', () => {
         Customerpage.verifyBalanceAfterDeposit(expectedBalance);
       });
     });
+
+    it('Should validate error messages', () => {
+      let depositAmount1 = 20.5;
+      Deposits.navigateToDeposits();
+      Deposits.clickDeposit();
+      
+      Deposits.enterDepositAmount(NaN);
+      cy.get('@enterDepositAmount').invoke('prop', 'validationMessage')
+          .should('equal', 'Please fill in this field.');
+
+      Deposits.enterDepositAmount(depositAmount1);
+      cy.get('@enterDepositAmount').invoke('prop', 'validationMessage')
+          .should('equal', 'Please enter a valid value. The two nearest valid values are 20 and 21.');
+
+    });
 })
