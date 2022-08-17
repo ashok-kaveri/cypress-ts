@@ -13,6 +13,7 @@ describe('As Customer', () => {
       let depositAmount = 100;
       let accountNumber = 1007;
       Deposits.depositAmount(accountNumber, depositAmount);
+      Deposits.verifyDepositSuccessMessage('Deposit Successful');
     });
 
     it('Should update the balance after depositing the amount', ()=>{
@@ -44,14 +45,11 @@ describe('As Customer', () => {
       let depositAmount1 = 20.5;
       Deposits.navigateToDeposits();
       Deposits.clickDeposit();
+
+      Deposits.enterDepositAmount(NaN); 
+      Deposits.validationMessageOnEmptyDepositAmount('Please fill in this field.');
       
-      Deposits.enterDepositAmount(NaN);
-      cy.get('@enterDepositAmount').invoke('prop', 'validationMessage')
-          .should('equal', 'Please fill in this field.');
-
       Deposits.enterDepositAmount(depositAmount1);
-      cy.get('@enterDepositAmount').invoke('prop', 'validationMessage')
-          .should('equal', 'Please enter a valid value. The two nearest valid values are 20 and 21.');
-
+      Deposits.validationMessageOnInvalidDepositAmount('Please enter a valid value.');
     });
 })

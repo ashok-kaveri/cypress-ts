@@ -4,8 +4,8 @@ class Deposits{
         cy.contains('Deposit').click();
     }
 
-    verifyDepositSuccess(){
-        cy.contains('Deposit Successful').should('be.visible');
+    verifyDepositSuccessMessage(message: any){
+        cy.contains(message).should('be.visible');
     }
 
     selectAccount(accountNumber: any){
@@ -27,7 +27,16 @@ class Deposits{
         this.selectAccount(accountNumber);
         this.enterDepositAmount(amount);
         this.clickDeposit();
-        this.verifyDepositSuccess();
+    }
+
+    validationMessageOnEmptyDepositAmount(message: any){
+        cy.get('@enterDepositAmount').invoke('prop', 'validationMessage')
+          .should('equal', message);  
+    }
+
+    validationMessageOnInvalidDepositAmount(message: any){
+        cy.get('@enterDepositAmount').invoke('prop', 'validationMessage')
+          .should('contains', message);   
     }
 }
 export default new Deposits();
