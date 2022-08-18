@@ -6,7 +6,7 @@ describe('Customer', () => {
         Landingpage.invokeApplication();
     })
 
-    it('should be able to login into XYZ bank', ()=>{
+    it('should be able to login into XYZ bank', function(){
         Landingpage.customerLoginButton();
         Customerpage.loginAs('Ron Weasly');
         Customerpage.verifyCustomerNameOnCustomerLandingPage('Ron Weasly');

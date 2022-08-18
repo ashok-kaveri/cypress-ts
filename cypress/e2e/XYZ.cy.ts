@@ -5,7 +5,7 @@ describe('Landing Page', () => {
        Landingpage.invokeApplication();
     })
     
-    it('should contain 3 buttons', () => {
+    it('should contain 3 buttons', function() {
     Landingpage.verifyButtonsOnLandingPage()
    })
 })
