@@ -1,7 +1,6 @@
 {
-  "depositAmount1": 10,
-  "depositAmount2": 20,
-  "depositAmount3": 40.5,
+  "depositAmount": 10,
+  "InvalidDepositAmount": 40.5,
 
   "accountNumber1": 1007,
   "accountNumber2": 1008,

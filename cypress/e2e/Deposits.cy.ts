@@ -15,26 +15,26 @@ describe('As Customer', () => {
     });
 
     it('Should be able to deposit amount and get success message', function() {
-      Deposits.depositAmount(this.depositData.accountNumber1, this.depositData.depositAmount1);
+      Deposits.depositAmount(this.depositData.accountNumber1, this.depositData.depositAmount);
       Deposits.verifyDepositSuccessMessage('Deposit Successful');
     });
 
     it('Should update the balance after depositing the amount', function(){
-      Deposits.depositAmount(this.depositData.accountNumber1, this.depositData.depositAmount1);
-      Customerpage.verifyBalanceAfterDeposit(this.depositData.depositAmount1)
+      Deposits.depositAmount(this.depositData.accountNumber1, this.depositData.depositAmount);
+      Customerpage.verifyBalanceAfterDeposit(this.depositData.depositAmount)
     });
 
     it('Should update the balance on multiple deposits', function(){
       Customerpage.getPreviousBalance();
-      Deposits.depositAmount(this.depositData.accountNumber1, this.depositData.depositAmount1);
+      Deposits.depositAmount(this.depositData.accountNumber1, this.depositData.depositAmount);
       cy.get('@previousBalance').then(previousBalance =>{
-        let expectedBalance:Number = Number(previousBalance) + this.depositData.depositAmount1;
+        let expectedBalance:Number = Number(previousBalance) + this.depositData.depositAmount;
         Customerpage.verifyBalanceAfterDeposit(expectedBalance);
       });
       Customerpage.getPreviousBalance();
-      Deposits.depositAmount(this.depositData.accountNumber1, this.depositData.depositAmount2);
+      Deposits.depositAmount(this.depositData.accountNumber1, this.depositData.depositAmount);
       cy.get('@previousBalance').then(previousBalance =>{
-        let expectedBalance:Number = Number(previousBalance) + this.depositData.depositAmount2;
+        let expectedBalance:Number = Number(previousBalance) + this.depositData.depositAmount;
         Customerpage.verifyBalanceAfterDeposit(expectedBalance);
       });
     });
@@ -46,7 +46,7 @@ describe('As Customer', () => {
       Deposits.enterDepositAmount(NaN); 
       Deposits.validationMessageOnEmptyDepositAmount('Please fill in this field.');
       
-      Deposits.enterDepositAmount(this.depositData.depositAmount3);
+      Deposits.enterDepositAmount(this.depositData.InvalidDepositAmount);
       Deposits.validationMessageOnInvalidDepositAmount('Please enter a valid value.');
     });
 })
